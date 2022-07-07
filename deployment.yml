@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gradle-deployment
+  labels:
+    app: denis
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: denis
+  template:
+    metadata:
+      labels:
+        app: denis
+    spec:
+      containers:
+        - name: gradle
+          image: doruardelean/kuberneteslive:1
+          ports:
+            - containerPort: 8080
